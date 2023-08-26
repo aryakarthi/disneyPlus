@@ -30,7 +30,10 @@ const Header = () => {
   const userDP = state?.signedInUser?.photoURL;
 
   const defaultImg =
-    "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745";
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
+
+    // const defaultImg =
+    // "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745";
 
   const menu = [
     {
@@ -107,11 +110,19 @@ const Header = () => {
         )}
       </div>
       {userDP ? (
-        <img
-          src={userDP}
-          className="w-[30px] rounded-full"
-          onClick={handleLogOut}
-        />
+        <div className="group relative">
+          <img
+            src={userDP}
+            className="w-[30px] rounded-full"
+            // onClick={handleLogOut}
+          />
+          <ul className="absolute hidden text-gray-700 pt-1 group-hover:block right-0 z-50">
+            <li className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><span>Profile</span></li>
+            <li className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><span>Subscription</span></li>
+            <li className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"><span>Settings</span></li>
+            <li className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onClick={handleLogOut}><span>Logout</span></li>
+          </ul>
+        </div>
       ) : (
         <img src={defaultImg} className="w-[30px] rounded-full" />
       )}
