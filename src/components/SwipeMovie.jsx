@@ -11,7 +11,6 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 const SwipeMovie = () => {
-  const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
   const [movieList, setMovieList] = useState([]);
 
@@ -51,7 +50,7 @@ const SwipeMovie = () => {
         {movieList.map((item) => (
           <SwiperSlide key={item.id}>
             <img
-              src={IMAGE_BASE_URL + item.backdrop_path}
+              src={import.meta.env.VITE_TMDB_IMG_BASE_URL + item.backdrop_path}
               className="min-w-full  md:h-[50vh] object-cover
             object-left-top mr-5 rounded-md hover:border-[1px]
             border-gray-400 transition-all duration-100 ease-in-out"

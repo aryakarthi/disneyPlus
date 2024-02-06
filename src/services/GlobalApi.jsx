@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const movieBaseUrl = "https://api.themoviedb.org/3";
-const api_key = "237ac8432039fa3424dcc6483ac9ac1e";
-
-const movieByGenreBaseURL =
-  "https://api.themoviedb.org/3/discover/movie?api_key=237ac8432039fa3424dcc6483ac9ac1e";
+const movieByGenreBaseURL = `${
+  import.meta.env.VITE_TMDB_BASE_URL
+}/discover/movie?api_key=${import.meta.env.VITE_TMDB_APIKEY}`;
 
 const getTrendingVideos = axios.get(
-  movieBaseUrl + "/trending/all/day?api_key=" + api_key
+  import.meta.env.VITE_TMDB_BASE_URL +
+    "/trending/all/day?api_key=" +
+    import.meta.env.VITE_TMDB_APIKEY
 );
 
 const getMovieByGenreId = (id) =>
